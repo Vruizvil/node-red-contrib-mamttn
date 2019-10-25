@@ -1,0 +1,64 @@
+<script type="text/javascript">
+    RED.nodes.registerType('ttntomam',{
+      category: 'TTNtoMAM',
+      color: '#f6bbcf',
+      defaults: {
+            iotaNode: {value: "", type:"mamserver"},
+            channelseed:{value:"VAEOUKFNMLFLCHHJSJYQXNS9HXCTVVITMLR9SXBVTGRTZHGXFOIUHETEIG9EWVORNLYXUGENZ9UHEOOTE"},
+            mode: {value: 'public'},
+            sidkey: {value: null},
+            tag: {value: "FROMNODERED"},
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "iota.png",
+        label: function() {
+            return this.name||"ttntomam";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="ttntomam">
+    <div class="form-row">
+      <label for="node-function-iotaNode"><i class="fa fa-server"></i> MAM node</label>
+      <input type="text" id="node-input-iotaNode" placeholder="MAM node">
+    </div>
+    <div class="form-row">
+      <label for="node-function-channelseed"><i class="fa fa-server"></i> Channel Seed</label>
+      <input type="text" id="node-input-channelseed" placeholder="MAM seed">
+    </div>
+    <div class="form-row">
+      <label for="node-function-mode"><i class="icon-tag"></i> Channel mode</label>
+      <select id="node-input-mode">
+            <option value="public">public</option>
+            <option value="restricted">restricted</option>
+            <option value="private">private</option>
+        </select>
+    </div>
+    <div class="form-row">
+      <label for="node-function-sidkey"><i class="icon-tag"></i> Sidkey</label>
+      <input type="text" id="node-input-sidkey" placeholder="only used on restricted mode">
+    </div>
+    <div class="form-row">
+      <label for="node-function-tag"><i class="icon-tag"></i> Tag</label>
+      <input type="text" id="node-input-tag" placeholder="your tag will be convert to trytes">
+    </div>
+    <div class="form-row">
+      <label for="node-function-name"><i class="icon-tag"></i> name</label>
+      <input type="text" id="node-input-name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="ttntomam">
+    <p>MAM publish node</p>
+    <b>MAMnode: </b> Setup IOTA server provider settings like host, port (14265 or 443 - are usual). Default value pow.iota.community:443 <br><br>
+    <b>ChannelSeed: </b> Enter your MAM seed (81 Trytes). Null value will create new seed<br><br>
+    <b>Channelmode: </b> String Intended channel mode. Can be only: public, private or restricted.<br><br>
+    <b>SidKey:</b> String Tryte-encoded encryption key, any length. Required for restricted mode.<br><br>
+    <b>Tag:</b> Enter a Tag for transaction.<br><br>
+    <b>Message:</b> Message data come from inject msg.payload.<br><br>
+   <p>In case of success <code>msg.payload</code> is set to data.</p>
+   <p>Follow the message in: <a href="https://mam-explorer.firebaseapp.com/" target="_blank">link</a>.</p>
+   <p>Read more about iota.lib.js API: <a href="https://www.npmjs.com/package/iota.lib.js" target="_blank">here</a>.</p>
+</script>

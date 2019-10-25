@@ -1,0 +1,60 @@
+<script type="text/javascript">
+    RED.nodes.registerType('mamFetch',{
+        category: 'IOTA-api',
+        color: '#f6bbcf',
+        defaults: {
+            iotaNode: {value: "", type:"iota-server"},
+            root: {value: "YBOBVSILRVCIIUZDPUCFQPGVJPAAUYPCNFPJBQWNKFUZEKFAJAGZAJGUTPIEWYBXWRNZHCEFIRIVOYTYWFLXRIDFBW"},
+            mode: {value: 'public'},
+            secret: {value: ''},
+            limit: {value: 1}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "iota.png",
+        label: function() {
+            return this.name||"mamFetch";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="mamFetch">
+    <div class="form-row">
+        <label for="node-function-iotaNode"><i class="fa fa-server"></i> MAM node</label>
+        <input type="text" id="node-input-iotaNode" placeholder="mam node">
+    </div>
+    <div class="form-row">
+        <label for="node-function-root"><i class="icon-tag"></i> Use root</label>
+        <input type="text" id="node-input-root" placeholder="MAM root 81 trytes. Empty to use inject msg.payload">
+    </div>
+    <div class="form-row">
+        <label for="node-function-mode"><i class="icon-tag"></i> Channel mode</label>
+        <select id="node-input-mode">
+              <option value="public">public</option>
+              <option value="restricted">restricted</option>
+              <option value="private">private</option>
+          </select>
+    </div>
+    <div class="form-row">
+        <label for="node-function-secret"><i class="icon-tag"></i> Secret key</label>
+        <input type="text" id="node-input-secret" placeholder="only used on restricted mode">
+    </div>
+    <div class="form-row">
+        <label for="node-function-limit"><i class="icon-tag"></i> Fetch limit</label>
+        <input type="text" id="node-input-limit" placeholder="fetching messages number">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="mamFetch">
+    <p>MAM fetch node</p>
+    <b>MAMnode: </b> Setup IOTA server provider settings like host, port (14265 or 443 - are usual). Default value pow.iota.community:443 <br><br>
+    <b>Root: </b> String Address 81 trytes or empty to inject msg.payload like Address format.<br><br>
+    <b>Channelmode: </b> String Intended channel mode. Can be only: public, private or restricted.<br><br>
+    <b>SidKey:</b> String Tryte-encoded encryption key, any length. Required for restricted mode.<br><br>
+    <b>Limit:</b> Number Optional limits the number of items returned, empty value defaults to all.<br><br>
+   <p>In case of success <code>msg.payload</code> is set to data.</p>
+   <p>Follow the message in: <a href="https://mam-explorer.firebaseapp.com/" target="_blank">link</a>.</p>
+   <p>Read more about iota.lib.js API: <a href="https://www.npmjs.com/package/iota.lib.js" target="_blank">here</a>.</p>
+
+
+</script>

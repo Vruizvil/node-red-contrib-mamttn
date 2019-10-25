@@ -1,0 +1,40 @@
+{
+  "name": "node-red-contrib-mamttn",
+  "version": "0.0.1",
+  "description": "Node Red integration whith THE THINGS NETWORK & IOTA",
+  "main": "ttntomam.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "node-red": {
+    "nodes": {
+      "ttn-to-mam": "ttntomams.js",
+      "mam-to-ttn": "mamtottn.js"
+    }
+  },
+  "author": "vruiz@wittelecom.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@iota/core": "*",
+    "transliteration": "^2.1.7",
+    "@iota/converter": "*",
+    "@iota/validators": "*",
+    "@iota/mam": "*",
+    "ttn":"*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vruizvil/node-red-contrib-mamttn.git"
+  },
+  "keywords": [
+    "node-red",
+    "iota",
+    "thetangle",
+    "tangle",
+    "mam",
+    "ttn",
+    "the things network",
+    "lorawan",
+    "lora"
+  ]
+}
