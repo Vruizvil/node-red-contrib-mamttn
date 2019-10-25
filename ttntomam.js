@@ -79,7 +79,7 @@ module.exports = function(RED) {
             if (this.readyMAM) {
               this.status({fill:"red",shape:"ring",text:"publishing"});
               this.readyMAM = false;
-              let trytes = IOTA_CONVERTER.asciiToTrytes(JSON.stringify(this.arrayPackets));
+              let trytes = asciiToTrytes(JSON.stringify(this.arrayPackets));
               let message = MAM.create(this._state, trytes);
               // Update the mam state so we can keep adding messages.
               this._state = message.state;
