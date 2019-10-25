@@ -19,8 +19,8 @@ module.exports = function(RED) {
               //console.log("Wrong user Channel Seed, generated random seed");
               let name = 'seed de prueba';
               console.log(name);
-              name = name.toUpperCase().replace(/\s/g,"");
-              config.channelseed = generateAddress(name, 1, 2, false);
+              //name = name.toUpperCase().replace(/\s/g,"");
+              //config.channelseed = generateAddress(name, 1, 2, false);
               //console.log(result);
             }
         }
@@ -49,7 +49,7 @@ module.exports = function(RED) {
             const pub = async packet => {
                     message = MAM.create(node._state,asciiToTrytes(JSON.stringify(this.arrayPackets)));
                     node._state = message.state;
-                    resp = await MAM.attach(message.payload, message.address,4,14,'IC');
+                    resp = await MAM.attach(message.payload, message.address,4,14,trytestag);
                     //resp.then(function(result) {
                               console.log(message);
             //                  console.log(resp);
