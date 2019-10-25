@@ -3,7 +3,7 @@ const IOTA_CONVERTER = require('@iota/converter')
 const { isAddress } = require('@iota/validators');
 
 module.exports = function(RED) {
-    function mamFetch(config) {
+    function mamtottn(config) {
         RED.nodes.createNode(this,config);
         var node = this;
         node.iotaNode = RED.nodes.getNode(config.iotaNode);
@@ -40,5 +40,5 @@ module.exports = function(RED) {
           this.status({});
         });
     }
-    RED.nodes.registerType("mamFetch",mamFetch);
+    RED.nodes.registerType("mamtottn",mamtottn);
 }
