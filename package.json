@@ -8,7 +8,7 @@
   },
   "node-red": {
     "nodes": {
-      "ttn-to-mam": "ttntomams.js",
+      "ttn-to-mam": "ttntomam.js",
       "mam-to-ttn": "mamtottn.js"
     }
   },
