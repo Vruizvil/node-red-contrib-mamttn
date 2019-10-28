@@ -19,8 +19,7 @@
     "transliteration": "^2.1.7",
     "@iota/converter": "*",
     "@iota/validators": "*",
-    "@iota/mam": "*",
-    "ttn":"*"
+    "@iota/mam": "*"
   },
   "repository": {
     "type": "git",
