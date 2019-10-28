@@ -43,37 +43,28 @@ module.exports = function(RED) {
             let trytestag = asciiToTrytes(JSON.stringify(node.tag));
             const packet = { time: Date.now(), tag: trytestag, data: msg.payload };
             this.arrayPackets.push(packet);
-            //console.log(this.arrayPackets.length);
-            //console.log(JSON.stringify(this.arrayPackets));
-            //console.log(this.readyMAM);
-            const pub = async packet => {
-                    message = MAM.create(node._state,asciiToTrytes(JSON.stringify(this.arrayPackets)));
-                    node._state = message.state;
-                    resp = await MAM.attach(message.payload, message.address,4,14,trytestag);
-                    //resp.then(function(result) {
-                              console.log(message);
-            //                  console.log(resp);
-                    //})
-            }
 
-            const main = async function () {
-              const client = await data(appID, accessKey)
+//            const pub = async packet => {
+//                    message = MAM.create(node._state,asciiToTrytes(JSON.stringify(this.arrayPackets)));
+//                    node._state = message.state;
+//                    resp = await MAM.attach(message.payload, message.address,4,14,trytestag);
+//                    console.log(message);
+//            }
 
-              client
-                .on("uplink", function (devID, payload) {
-                  //console.log("Received uplink from ", devID)
-                  console.log(payload)
-                  pub(payload);
-                  // send downlink
-                  //client.send(devID, "0xF",1,false,'replace');
-                  //console.log("Sending download to ", devID);
-                })
-            }
+//              const main = async function () {
+//              const client = await data(appID, accessKey)
 
-            main().catch(function (err) {
-              console.error(err)
-              process.exit(1)
-            })
+//              client
+//                .on("uplink", function (devID, payload) {
+//                  console.log(payload)
+//                  pub(payload);
+//                })
+//            }
+
+//            main().catch(function (err) {
+//              console.error(err)
+//              process.exit(1)
+//            })
 
 
             if (this.readyMAM) {
