@@ -1,6 +1,6 @@
 <script type="text/javascript">
     RED.nodes.registerType('ttntomam',{
-      category: 'TTNtoMAM',
+      category: 'ttntomam',
       color: '#f6bbcf',
       defaults: {
             iotaNode: {value: "", type:"mamserver"},
@@ -51,7 +51,7 @@
 </script>
 
 <script type="text/x-red" data-help-name="ttntomam">
-    <p>MAM publish node</p>
+    <p>TTN to MAM publish node</p>
     <b>MAMnode: </b> Setup IOTA server provider settings like host, port (14265 or 443 - are usual). Default value pow.iota.community:443 <br><br>
     <b>ChannelSeed: </b> Enter your MAM seed (81 Trytes). Null value will create new seed<br><br>
     <b>Channelmode: </b> String Intended channel mode. Can be only: public, private or restricted.<br><br>

@@ -1,8 +1,6 @@
 const MAM = require('@iota/mam');
-const { asciiToTrytes, trytesToAscii, trits, trytes, value, fromValue } = require('@iota/converter');
+const IOTA_CONVERTER = require('@iota/converter');
 const { isTrytes } = require('@iota/validators');
-//const { data, application } = require('ttn');
-const { generateAddress } = require('@iota/core');
 
 module.exports = function(RED) {
     function ttntomam(config) {
@@ -17,17 +15,8 @@ module.exports = function(RED) {
           }  else {
               config.channelseed = null;
               //console.log("Wrong user Channel Seed, generated random seed");
-              let name = 'seed de prueba';
-              console.log(name);
-              //name = name.toUpperCase().replace(/\s/g,"");
-              //config.channelseed = generateAddress(name, 1, 2, false);
-              //console.log(result);
             }
         }
-//        const appID = 'iotopentech';
-//        const accessKey = 'ttn-account-v2.hLI6TVUdL4uPkXgUECKvvnDlLm2nvlSSj24ciHOth_Q';
-
-
 
         node._state = MAM.init({ provider: node.iotaNode.host, 'port': node.iotaNode.port },config.channelseed,2);
         //console.log('GetRootInit: ' + MAM.getRoot(node._state));
@@ -40,37 +29,16 @@ module.exports = function(RED) {
         node.tangleLink = 'https://thetangle.org/address/'
 
         node.on('input', function(msg) {
-            let trytestag = asciiToTrytes(JSON.stringify(node.tag));
+            let trytestag = IOTA_CONVERTER.asciiToTrytes(JSON.stringify(node.tag));
             const packet = { time: Date.now(), tag: trytestag, data: msg.payload };
             this.arrayPackets.push(packet);
-
-//            const pub = async packet => {
-//                    message = MAM.create(node._state,asciiToTrytes(JSON.stringify(this.arrayPackets)));
-//                    node._state = message.state;
-//                    resp = await MAM.attach(message.payload, message.address,4,14,trytestag);
-//                    console.log(message);
-//            }
-
-//              const main = async function () {
-//              const client = await data(appID, accessKey)
-
-//              client
-//                .on("uplink", function (devID, payload) {
-//                  console.log(payload)
-//                  pub(payload);
-//                })
-//            }
-
-//            main().catch(function (err) {
-//              console.error(err)
-//              process.exit(1)
-//            })
-
-
+            //console.log(this.arrayPackets.length);
+            //console.log(JSON.stringify(this.arrayPackets));
+            //console.log(this.readyMAM);
             if (this.readyMAM) {
               this.status({fill:"red",shape:"ring",text:"publishing"});
               this.readyMAM = false;
-              let trytes = asciiToTrytes(JSON.stringify(this.arrayPackets));
+              let trytes = IOTA_CONVERTER.asciiToTrytes(JSON.stringify(this.arrayPackets));
               let message = MAM.create(this._state, trytes);
               // Update the mam state so we can keep adding messages.
               this._state = message.state;
