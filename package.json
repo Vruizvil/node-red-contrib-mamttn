@@ -8,8 +8,8 @@
   },
   "node-red": {
     "nodes": {
-      "ttn-to-mam": "ttntomam.js",
-      "mam-to-ttn": "mamtottn.js"
+      "ttntomam": "ttntomam.js",
+      "mamtottn": "mamtottn.js"
     }
   },
   "author": "vruiz@wittelecom.com>",
