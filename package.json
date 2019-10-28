@@ -12,7 +12,7 @@
       "mamtottn": "mamtottn.js"
     }
   },
-  "author": "vruiz@wittelecom.com>",
+  "author": "vruiz@wittelecom.com",
   "license": "MIT",
   "dependencies": {
     "@iota/core": "*",
@@ -20,7 +20,7 @@
     "@iota/converter": "*",
     "@iota/validators": "*",
     "@iota/mam": "*",
-    "ttn":"*"
+    "ttn": "*"
   },
   "repository": {
     "type": "git",
