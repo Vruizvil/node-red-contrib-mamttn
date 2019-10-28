@@ -1,7 +1,7 @@
 const MAM = require('@iota/mam');
 const { asciiToTrytes, trytesToAscii, trits, trytes, value, fromValue } = require('@iota/converter');
 const { isTrytes } = require('@iota/validators');
-var { data, application } = require('ttn');
+const { data, application } = require('ttn');
 const { generateAddress } = require('@iota/core');
 
 module.exports = function(RED) {
@@ -24,8 +24,8 @@ module.exports = function(RED) {
               //console.log(result);
             }
         }
-        const appID = 'iotopentech';
-        const accessKey = 'ttn-account-v2.hLI6TVUdL4uPkXgUECKvvnDlLm2nvlSSj24ciHOth_Q';
+//        const appID = 'iotopentech';
+//        const accessKey = 'ttn-account-v2.hLI6TVUdL4uPkXgUECKvvnDlLm2nvlSSj24ciHOth_Q';
 
 
 
