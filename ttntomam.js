@@ -1,7 +1,7 @@
 const MAM = require('@iota/mam');
 const { asciiToTrytes, trytesToAscii, trits, trytes, value, fromValue } = require('@iota/converter');
 const { isTrytes } = require('@iota/validators');
-const { data, application } = require('ttn');
+//const { data, application } = require('ttn');
 const { generateAddress } = require('@iota/core');
 
 module.exports = function(RED) {
